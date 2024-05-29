@@ -19,7 +19,7 @@ function init() {
     return integerToRoman ? 'Integer To Roman' : 'Roman To Integer';
   };
 
-  // Now, the convertion operation does only perform the operation. 
+  // Now, the conversion operation does only perform the operation. 
   // Things we have extracted to this listener: 
   // 1 - Read the UI inputs (inputArea.value)
   // 2 - Write the UI output (outputArea.innerHTML)
@@ -27,16 +27,16 @@ function init() {
   // This is cleaner and also removes code duplications
   convertButton.addEventListener('click', () => {
     let inputValue = inputArea.value;
-    let convertion = modeCheckbox.checked ? convertIntegerToRoman(inputValue) : convertRomanToInteger(inputValue);
-    if (convertion.result) {
-      outputArea.innerHTML = convertion.value;
+    let conversion = modeCheckbox.checked ? convertIntegerToRoman(inputValue) : convertRomanToInteger(inputValue);
+    if (conversion.result) {
+      outputArea.innerHTML = conversion.value;
     } else {
-      alert(convertion.message);
+      alert(conversion.message);
     }
   });
 }
 
-// Now the convertion methods receive both an input argument instead
+// Now the conversion methods receive both an input argument instead
 // of reading directly from the UI.
 // On top of that, they return a JSON object instead of updating the
 // UI directly. The JSON object contains the result (ok/nok), the value
@@ -92,9 +92,9 @@ const convertRomanToInteger = (roman) => {
   response.result = true;
 
   return response;
-};
+}
 
-// Now the convertion methods receive both an input argument instead
+// Now the conversion methods receive both an input argument instead
 // of reading directly from the UI.
 // On top of that, they return a JSON object instead of updating the
 // UI directly. The JSON object contains the result (ok/nok), the value
@@ -152,7 +152,7 @@ const convertIntegerToRoman = (num) => {
   response.result = true;
 
   return response;
-};
+}
 
 const lessThan9 = (num, obj) => {
   if (num === 9) {
@@ -164,7 +164,7 @@ const lessThan9 = (num, obj) => {
   } else {
     return obj[1].repeat(num);
   }
-};
+}
 
 const greaterThan9 = (num, obj) => {
   if (num >= 10 && num < 50) {
@@ -214,4 +214,4 @@ const greaterThan9 = (num, obj) => {
 
     return obj[1000].repeat(parseInt(num / 1000));
   }
-};
+}
