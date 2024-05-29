@@ -1,24 +1,24 @@
 // Constants for the literals
-const INVALID_ROMAN = "Please enter a valid roman";
-const INVALID_INTEGER = "Please enter a valid integer";
-const OUT_OF_RANGE = "Out of range (1-3999)";
+const INVALID_ROMAN = 'Please enter a valid roman';
+const INVALID_INTEGER = 'Please enter a valid integer';
+const OUT_OF_RANGE = 'Out of range (1-3999)';
 
 function init() { 
   
   // Load elements once to avoid repetition on every invocation
-  var modeCheckbox = document.querySelector("input[type='checkbox']");
-  var header = document.querySelector("h1");
-  var convertButton = document.querySelector(".convert-button");
-  var outputArea = document.querySelector(".convert-output");
-  var inputArea = document.querySelector("input[type='text']");
+  var modeCheckbox = document.querySelector('input[type='checkbox']');
+  var header = document.querySelector('h1');
+  var convertButton = document.querySelector('.convert-button');
+  var outputArea = document.querySelector('.convert-output');
+  var inputArea = document.querySelector('input[type='text']');
 
 
-  modeCheckbox.addEventListener("change", (e) => {
+  modeCheckbox.addEventListener('change', (e) => {
     header.innerHTML = getModeTitle(e.target.checked);
   });
 
   const getModeTitle = (integerToRoman) => {
-    return integerToRoman ? "Integer To Roman" : "Roman To Integer";
+    return integerToRoman ? 'Integer To Roman' : 'Roman To Integer';
   };
 
   // Now, the convertion operation does only perform the operation. 
