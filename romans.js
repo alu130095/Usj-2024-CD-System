@@ -3,13 +3,13 @@ const INVALID_ROMAN = 'Please enter a valid roman';
 const INVALID_INTEGER = 'Please enter a valid integer';
 const OUT_OF_RANGE = 'Out of range (1-3999)';
 
-function init() { 
+function init() {
   // Load elements once to avoid repetition on every invocation
-  var modeCheckbox = document.querySelector('input[type=\'checkbox\']');
+  var modeCheckbox = document.querySelector('input[type="checkbox"]');
   var header = document.querySelector('h1');
   var convertButton = document.querySelector('.convert-button');
   var outputArea = document.querySelector('.convert-output');
-  var inputArea = document.querySelector('input[type=\'text\']');
+  var inputArea = document.querySelector('input[type="text"]');
 
   modeCheckbox.addEventListener('change', (e) => {
     header.innerHTML = getModeTitle(e.target.checked);
@@ -19,13 +19,13 @@ function init() {
     return integerToRoman ? 'Integer To Roman' : 'Roman To Integer';
   };
 
-  // Now, the conversion operation does only perform the operation. 
-  // Things we have extracted to this listener: 
+  // Now, the conversion operation does only perform the operation.
+  // Things we have extracted to this listener:
   // 1 - Read the UI inputs (inputArea.value)
   // 2 - Write the UI output (outputArea.innerHTML)
   // 3 - Show error messages
   // This is cleaner and also removes code duplications
-  convertButton.addEventListener('click', () => {
+  convertButton.addEventListener("click", () => {
     let inputValue = inputArea.value;
     let conversion = modeCheckbox.checked ? convertIntegerToRoman(inputValue) : convertRomanToInteger(inputValue);
     if (conversion.result) {
@@ -34,7 +34,7 @@ function init() {
       alert(conversion.message);
     }
   });
-}
+};
 
 // Now the conversion methods receive both an input argument instead
 // of reading directly from the UI.
@@ -43,10 +43,10 @@ function init() {
 // and an error message if needed
 const convertRomanToInteger = (roman) => {
   let response = {
-    value: 0, 
+    value: 0,
     message: '',
-    result: false 
-  };
+    result: false
+  }
 
   // Regexp to check if a string is a valid roman number
   const romanNumeralRegex = new RegExp(
@@ -80,9 +80,9 @@ const convertRomanToInteger = (roman) => {
 
   for (let i = roman.length - 1; i >= 0; i--) {
     if (arr.indexOf(roman[i]) >= prevIndex) {
-      sum = sum + values[roman[i]];
+      sum += values[roman[i]];
     } else {
-      sum = sum - values[roman[i]];
+      sum -= values[roman[i]];
     }
 
     prevIndex = arr.indexOf(roman[i]);
@@ -102,9 +102,9 @@ const convertRomanToInteger = (roman) => {
 const convertIntegerToRoman = (num) => {
   let response = {
     value: 0,
-    message: '', 
-    result: false 
-  };
+    message: '',
+    result: false
+  }
 
   // Regexp to check the input is a valid integer
   const numberRegex = new RegExp(/^\d+$/);
@@ -119,7 +119,7 @@ const convertIntegerToRoman = (num) => {
   // Integer not in the supported range -> exit with the right message
   if (Number(num) > 3999 || Number(num) < 1) {
     response.message = OUT_OF_RANGE;
-    return response;   
+    return response;
   }
 
   const mapping = {
