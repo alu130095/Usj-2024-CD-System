@@ -7,22 +7,42 @@
     window.dataLayer = window.dataLayer || [];
     function gtag(){dataLayer.push(arguments);}
     gtag('js', new Date());
-
     gtag('config', 'G-PCBH8NS1ZB');
   </script>
   <script src="romans.js"></script>
   <link rel="stylesheet" href="romans.css">
+  <script>
+    function enhancedInit() {
+      init();
+      const convertButton = document.querySelector('.convert-button');
+      const modeCheckbox = document.querySelector('input[type="checkbox"]');
+      const inputArea = document.querySelector('input[type="text"]');
+      const outputArea = document.querySelector('.convert-output');
+
+      convertButton.addEventListener("click", () => {
+        let inputValue = inputArea.value;
+        let conversion = modeCheckbox.checked ? convertIntegerToRoman(inputValue) : convertRomanToInteger(inputValue);
+        if (conversion.result) {
+          gtag('event', 'conversion_calculated', {
+            'conversionType': modeCheckbox.checked ? 'Integer to Roman' : 'Roman to Integer',
+            'inputValue': inputValue,
+            'outputValue': conversion.value
+          });
+        }
+      });
+    }
+  </script>
 </head>
-<body onload="init()">
+<body onload="enhancedInit()">
   <main class="container">
     <section class="content">
       <h1> USJ - Roman To Integer</h1>
       <div class="group">
-        <input type="checkbox" id="mode-selector" name="mode-selector" />
+        <input type="checkbox" name="mode-selector" />
         <label for="mode-selector">Change Mode</label>
       </div>
       <div class="group">
-        <input type="text" id="conversion-input" name="conversion-input" />
+        <input type="text" name="conversion-input" />
       </div>
       <span class="convert-button">Convert</span>
       <p class="convert-output"></p>
