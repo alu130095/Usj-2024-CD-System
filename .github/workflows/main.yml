@@ -30,7 +30,7 @@ jobs:
       # Runs a single command using the runners shell
       - name: Set-up Node
         uses: actions/setup-node@v1
-        with: 
+        with:
          node-version: 10.x
       - name: Install Dependencies
         run: | 
